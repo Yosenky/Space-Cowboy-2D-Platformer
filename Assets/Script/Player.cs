@@ -5,7 +5,6 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
    private Vector3 direction;
-   public float gravity = -9.8f;
    public float strength = 5f, velocity=5f;
    public float bulletSpeed = 10;
    public Rigidbody bullet;
@@ -18,7 +17,6 @@ public class Player : MonoBehaviour
              Fire();
      }
 
-     direction.y += gravity * Time.deltaTime;
      transform.position += direction*Time.deltaTime;
 
    }
