@@ -13,9 +13,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - Obstacle
+  - Player
+  - Enemy
   - 
   - 
   - 
@@ -40,13 +40,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: UI Background
-    uniqueID: 4091624339
-    locked: 0
-  - name: UI Middleground
-    uniqueID: 1599801975
-    locked: 0
-  - name: UI Foreground
-    uniqueID: 3254890005
     locked: 0
