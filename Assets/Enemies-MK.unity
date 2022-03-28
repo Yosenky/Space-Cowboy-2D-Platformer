@@ -304,7 +304,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!4 &170819849 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7811301151509889178, guid: d8e1d880636f54b1296d0d997931e0ed,
