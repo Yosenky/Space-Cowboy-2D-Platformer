@@ -6,12 +6,16 @@ public class Player : MonoBehaviour
 {
    public Rigidbody2D rb;
    private float strength = 250f, velocity=5f;
-   public float bulletSpeed = 10;
+   private float bulletSpeed = 10;
    public Rigidbody bullet;
-   private bool jumping=false;
+   private bool onFloor=false;
+   private int jumping=0;
+   public int currentHealth = 0, maxHealth=250;
+   public HealthBar healthBar;
 
    void Awake(){
     rb = GetComponent<Rigidbody2D>();
+    currentHealth=maxHealth;
    }
    void Update(){
      jump();
@@ -21,12 +25,20 @@ public class Player : MonoBehaviour
              Fire();
      }
 
+     if (Input.GetKeyDown(KeyCode.X)){
+        DamagePlayer(10);
+     }
+
    }
 
      void jump(){
-        if(Input.GetKeyDown(KeyCode.Space)&&!jumping){
+        if(Input.GetKeyDown(KeyCode.Space)&&onFloor&&jumping==0){
           rb.AddForce(transform.up*strength);
-          jumping=true;
+          onFloor=false;
+          jumping++;
+        }else if(Input.GetKeyDown(KeyCode.Space)&&!onFloor&&jumping==1){
+          rb.AddForce(transform.up*strength);
+          jumping=0;  
         }
      }
      void Fire()
@@ -53,6 +65,18 @@ public class Player : MonoBehaviour
         {
             rb.velocity = new Vector2 (0,0);
         }
+     }
+
+     private void OnTriggerEnter2D(Collider2D other){
+        if (other.gameObject.tag == "Floor"){
+            onFloor=true;
+            jumping=0;
+        }
+     }
+
+     private void DamagePlayer(int damage){
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
      }
  
 
