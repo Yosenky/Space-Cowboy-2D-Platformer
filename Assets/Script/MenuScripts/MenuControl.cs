@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class MenuControl : MonoBehaviour
 {
@@ -14,9 +15,11 @@ public class MenuControl : MonoBehaviour
     public Button optionsButton;
     public Button exitButton;
     public Button optionsBackButton;
+    public Button SaveSettingsButton;
     //The options menu panel as a GameObject
     public GameObject optionsPanel;
 
+    //String name of the main scene to be loaded from the start button
     public string mainScene = "SampleScene";
     private bool optionsMenuActive;
 
@@ -42,6 +45,7 @@ public class MenuControl : MonoBehaviour
         optionsButton.onClick.AddListener(() => toggleOptions());
         optionsBackButton.onClick.AddListener(() => toggleOptions());
         exitButton.onClick.AddListener(() => exitGame());
+        SaveSettingsButton.onClick.AddListener(() => saveSettings());
     }
 
 
@@ -49,15 +53,23 @@ public class MenuControl : MonoBehaviour
     void startGame() => SceneManager.LoadScene(mainScene);
 
     //Toggles the options menu on and off (triggered by back and options)
-    void toggleOptions() {
+    public void toggleOptions() {
         //If the panel is active, disable it
         if(optionsPanel.activeSelf) {
             optionsPanel.SetActive(false);
+            optionsPanel.GetComponent<SettingsControl>().LoadSettings(optionsPanel.GetComponent<SettingsControl>().GetResolution());
         }
         //If the panel is inactive, enable it
         else {
             optionsPanel.SetActive(true);
+            optionsPanel.GetComponent<SettingsControl>().LoadSettings(optionsPanel.GetComponent<SettingsControl>().GetResolution());
         }
+    }
+
+    //Saves the settings and goes back to the main menu
+    void saveSettings() {
+        optionsPanel.GetComponent<SettingsControl>().SaveSettings();
+        toggleOptions();
     }
 
     //Exits the game
