@@ -9,7 +9,7 @@ public class FinalBossBehavior : MonoBehaviour
   public EdgeCollider2D edgeCollider; //Collider inside of the boss for the sake of spawning spikes inside of him
 
   public GameObject[] cactusBulletStage1Array; //Holds the cactus bullets once they have been instantiated
-  public float[] cactusBulletStage1RotatonArray; //Holds the cactus bullets' rotation
+  public float[] cactusBulletStage1RotationArray; //Holds the cactus bullets' rotation
   public Rigidbody2D[] cactusBulletStage1RigidBodyArray; //Holds the cactus bullets' rigidbodies
 
   public SpriteRenderer[] spriteRenderers; //Sprite renderers, used to swap sprites
@@ -33,12 +33,12 @@ public class FinalBossBehavior : MonoBehaviour
     void stageOneShoot()
     {
       //Instantiate bullets around cactus
-      numberOfBullets = Random.Range(5,8);
-      //int numberOfBullets = 8; //Static number used in bug testing
+      numberOfBullets = Random.Range(8,12);
+      //numberOfBullets = 3; //Static number used in bug testing
 
       //initializing arrays
       cactusBulletStage1Array = new GameObject[numberOfBullets];
-      cactusBulletStage1RotatonArray = new float[numberOfBullets];
+      cactusBulletStage1RotationArray = new float[numberOfBullets];
       cactusBulletStage1RigidBodyArray = new Rigidbody2D[numberOfBullets];
       spriteRenderers = new SpriteRenderer[numberOfBullets];
 
@@ -53,7 +53,7 @@ public class FinalBossBehavior : MonoBehaviour
     IEnumerator spawnNewBullets(){
       for(int i = 0; i < numberOfBullets; i++)
       {
-        float bulletRotation = 90 - (180/(numberOfBullets-1)) * i; //Rotation of the bullets as they are spawned in, creates a semicircle around cactus
+        float bulletRotation = 85 - (170/(numberOfBullets-1)) * i; //Rotation of the bullets as they are spawned in, creates a semicircle around cactus
         if(!bulletsDestroyed)
         {
           changeBulletSprites();
@@ -61,9 +61,11 @@ public class FinalBossBehavior : MonoBehaviour
           destroyBullets();
           bulletsDestroyed = true;
         }
-        cactusBulletStage1Array[i] = Instantiate(cactusBulletStage1, new Vector3(edgeCollider.transform.position.x, edgeCollider.transform.position.y, 0),Quaternion.Euler(0, 0, bulletRotation));
+        cactusBulletStage1Array[i] = Instantiate(cactusBulletStage1,
+                                                 new Vector3(edgeCollider.transform.position.x, edgeCollider.transform.position.y, 0),
+                                                 Quaternion.Euler(0, 0, bulletRotation));
         spriteRenderers[i] = cactusBulletStage1Array[i].GetComponent<SpriteRenderer>();
-        cactusBulletStage1RotatonArray[i] = bulletRotation;
+        cactusBulletStage1RotationArray[i] = bulletRotation;
         cactusBulletStage1RigidBodyArray[i] = cactusBulletStage1Array[i].GetComponent<Rigidbody2D>();
       }
     }
@@ -86,16 +88,21 @@ public class FinalBossBehavior : MonoBehaviour
 
     void testingShoot()
     { 
-      int movementSpeed = 50;
-      int force = 20;
+      int bulletSpeed = 10; //Speed of bullets
+
       //Shoots bullets(will automate later)
       if(Input.GetKeyDown(KeyCode.Space))
       {
         for(int i = 0; i < cactusBulletStage1Array.Length; i++)
         {
           cactusBulletStage1RigidBodyArray[i].constraints = RigidbodyConstraints2D.None;
-          cactusBulletStage1RigidBodyArray[i].velocity = new Vector2(-Mathf.Sin(cactusBulletStage1RigidBodyArray[i].transform.rotation.z) * 10,
-                                                                     Mathf.Cos(cactusBulletStage1RigidBodyArray[i].transform.rotation.z) * 10);
+          cactusBulletStage1RigidBodyArray[i].velocity = new Vector2(-Mathf.Sin(cactusBulletStage1RotationArray[i] * Mathf.Deg2Rad) * bulletSpeed,
+                                                                      Mathf.Cos(cactusBulletStage1RotationArray[i] * Mathf.Deg2Rad) * bulletSpeed);
+          Debug.Log("Z rotation: " + cactusBulletStage1RotationArray[i]);
+          Debug.Log("Sin(Z) = " + Mathf.Sin(cactusBulletStage1RotationArray[i]) * Mathf.Deg2Rad);
+          Debug.Log("Cos(Z) = " + Mathf.Cos(cactusBulletStage1RotationArray[i]) * Mathf.Deg2Rad);
+          Debug.Log("X Velocity: " + cactusBulletStage1RigidBodyArray[i].velocity.x);
+          Debug.Log("Y Velocity: " + cactusBulletStage1RigidBodyArray[i].velocity.y);
         }
 
       }
