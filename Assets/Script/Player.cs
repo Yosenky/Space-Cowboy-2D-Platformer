@@ -5,11 +5,11 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
    public Rigidbody2D rb;
-   private float strength = 250f, velocity=5f;
-   private float bulletSpeed = 10;
+   public float strength = 300f, velocity=5f, runSpeed=100f;
+   public float bulletSpeed = 10;
    public Rigidbody bullet;
-   private bool onFloor=false;
-   private int jumping=0;
+   public bool onFloor=false, isRunning=false;
+   public int jumping=0;
    public int currentHealth = 0, maxHealth=250;
    public HealthBar healthBar;
 
@@ -28,6 +28,13 @@ public class Player : MonoBehaviour
      if (Input.GetKeyDown(KeyCode.X)){
         DamagePlayer(10);
      }
+
+     if(onFloor){
+        rb.gravityScale=0f;
+     }else
+        rb.gravityScale=1f;
+
+
 
    }
 
@@ -49,19 +56,28 @@ public class Player : MonoBehaviour
      }
 
      void move(){
-        if (Input.GetKeyDown (KeyCode.A)) 
+        
+        if (Input.GetKeyDown(KeyCode.A)) 
          {
-             rb.velocity = new Vector2 (velocity * -1,rb.velocity.y);
+          if(Input.GetKey(KeyCode.RightShift)){
+              isRunning=true;
+              rb.velocity = new Vector2 (runSpeed*-1,rb.velocity.y);
+            }else
+              rb.velocity = new Vector2 (velocity * -1,rb.velocity.y);  
          }
-        if (Input.GetKeyUp (KeyCode.A)) 
+        if (Input.GetKeyUp(KeyCode.A)) 
         {
             rb.velocity = new Vector2 (0,0);
         }
-        if (Input.GetKeyDown (KeyCode.D)) 
+        if (Input.GetKeyDown(KeyCode.D)) 
         {
-            rb.velocity = new Vector2 (velocity, rb.velocity.y);
+            if(Input.GetKey(KeyCode.RightShift)){
+              isRunning=true;
+              rb.velocity = new Vector2 (runSpeed,rb.velocity.y);
+            }else
+              rb.velocity = new Vector2 (velocity,rb.velocity.y);
         }
-        if (Input.GetKeyUp (KeyCode.D)) 
+        if (Input.GetKeyUp(KeyCode.D)) 
         {
             rb.velocity = new Vector2 (0,0);
         }
