@@ -21,14 +21,17 @@ public class Player : MonoBehaviour
      jump();
      move();
 
+     //press J or click to shoot
      if (Input.GetKeyDown(KeyCode.J) || Input.GetMouseButtonDown(0)){
              Fire();
      }
 
+     //damage player test
      if (Input.GetKeyDown(KeyCode.X)){
         DamagePlayer(10);
      }
 
+     //remove gravity if on floor so that player movement doesn't slow down
      if(onFloor){
         rb.gravityScale=0f;
      }else
@@ -38,16 +41,20 @@ public class Player : MonoBehaviour
 
    }
 
+     //jump method press Space to jump
      void jump(){
+        //check if it's the first jump
         if(Input.GetKeyDown(KeyCode.Space)&&onFloor&&jumping==0){
           rb.AddForce(transform.up*strength);
           onFloor=false;
           jumping++;
+        //check for second jump, while player in the air
         }else if(Input.GetKeyDown(KeyCode.Space)&&!onFloor&&jumping==1){
           rb.AddForce(transform.up*strength);
           jumping=0;  
         }
      }
+     //create bullets and give them velocity
      void Fire()
      {
          Rigidbody bulletClone = (Rigidbody) Instantiate(bullet, transform.position, transform.rotation);
@@ -56,19 +63,23 @@ public class Player : MonoBehaviour
      }
 
      void move(){
-        
+        //if A is press down move left
         if (Input.GetKeyDown(KeyCode.A)) 
          {
+          //if holding shift, increase speed
           if(Input.GetKey(KeyCode.RightShift)){
               isRunning=true;
               rb.velocity = new Vector2 (runSpeed*-1,rb.velocity.y);
             }else
               rb.velocity = new Vector2 (velocity * -1,rb.velocity.y);  
          }
+
+        //
         if (Input.GetKeyUp(KeyCode.A)) 
         {
             rb.velocity = new Vector2 (0,0);
         }
+        //same as above
         if (Input.GetKeyDown(KeyCode.D)) 
         {
             if(Input.GetKey(KeyCode.RightShift)){
@@ -84,12 +95,14 @@ public class Player : MonoBehaviour
      }
 
      private void OnTriggerEnter2D(Collider2D other){
+        //check if the object is floor and set jump to first jump
         if (other.gameObject.tag == "Floor"){
             onFloor=true;
             jumping=0;
         }
      }
 
+     
      private void DamagePlayer(int damage){
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
