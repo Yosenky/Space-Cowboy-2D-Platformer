@@ -49,8 +49,11 @@ public class MenuControl : MonoBehaviour
     }
 
 
-    //Starts up the game's main scene
-    void startGame() => SceneManager.LoadScene(mainScene);
+    //Starts up the game's main scene and unload the main menu
+    void startGame() {
+        SceneManager.LoadScene(mainScene);
+        SceneManager.UnloadSceneAsync("MainMenu");
+    }
 
     //Toggles the options menu on and off (triggered by back and options)
     public void toggleOptions() {
