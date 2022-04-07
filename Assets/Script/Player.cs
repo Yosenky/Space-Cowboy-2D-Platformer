@@ -100,6 +100,9 @@ public class Player : MonoBehaviour
             onFloor=true;
             jumping=0;
         }
+        if (other.gameObject.tag == "Bullet"){
+            DamagePlayer(10);
+        }
      }
 
      
