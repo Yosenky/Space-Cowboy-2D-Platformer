@@ -91,7 +91,7 @@ public class FinalBossBehavior : MonoBehaviour
       int bulletSpeed = 10; //Speed of bullets
 
       //Shoots bullets(will automate later)
-      if(Input.GetKeyDown(KeyCode.Space))
+      if(Input.GetKeyDown(KeyCode.G))
       {
         for(int i = 0; i < cactusBulletStage1Array.Length; i++)
         {
