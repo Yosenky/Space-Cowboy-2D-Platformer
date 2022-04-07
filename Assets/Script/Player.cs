@@ -50,6 +50,7 @@ public class Player : MonoBehaviour
           jumping++;
         //check for second jump, while player in the air
         }else if(Input.GetKeyDown(KeyCode.Space)&&!onFloor&&jumping==1){
+          rb.velocity.y=0;
           rb.AddForce(transform.up*strength);
           jumping=0;  
         }
