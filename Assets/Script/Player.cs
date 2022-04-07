@@ -32,10 +32,10 @@ public class Player : MonoBehaviour
      }
 
      //remove gravity if on floor so that player movement doesn't slow down
-     if(onFloor){
+     /*if(d){
         rb.gravityScale=0f;
      }else
-        rb.gravityScale=1f;
+        rb.gravityScale=1f;*/
 
 
 
