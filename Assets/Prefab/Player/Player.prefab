@@ -99,7 +99,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 6333080842278244088}
+  strength: 300
+  velocity: 5
+  runSpeed: 100
+  bulletSpeed: 10
   bullet: {fileID: 6333080842929083926}
+  onFloor: 0
+  isRunning: 0
+  jumping: 0
   currentHealth: 0
   maxHealth: 250
   healthBar: {fileID: 0}
@@ -112,7 +119,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 6333080842278244092}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 3a453b6b773d93c7f8ecc8b7c6362d62, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0

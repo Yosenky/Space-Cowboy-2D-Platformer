@@ -51,6 +51,7 @@ public class FinalBossBehavior : MonoBehaviour
     }
 
     IEnumerator spawnNewBullets(){
+      Debug.Log("SpawnNewbullets");
       for(int i = 0; i < numberOfBullets; i++)
       {
         float bulletRotation = 85 - (170/(numberOfBullets-1)) * i; //Rotation of the bullets as they are spawned in, creates a semicircle around cactus
@@ -68,8 +69,19 @@ public class FinalBossBehavior : MonoBehaviour
         cactusBulletStage1RotationArray[i] = bulletRotation;
         cactusBulletStage1RigidBodyArray[i] = cactusBulletStage1Array[i].GetComponent<Rigidbody2D>();
       }
+      spawnNewBulletsTimer();
     }
     
+
+    IEnumerator spawnNewBulletsTimer(){
+      Debug.Log("WORKING");
+      testingShoot();
+      yield return new WaitForSeconds(1);
+      bulletsDestroyed = false;
+      StartCoroutine(spawnNewBullets());
+    }
+
+    //Changes the bullet sprites to show that they have been destroyed
     void changeBulletSprites()
     {
       for(int j = 0; j < spriteRenderers.Length; j++)
@@ -78,6 +90,7 @@ public class FinalBossBehavior : MonoBehaviour
       }
     }
 
+    //Destroys all bullets in the cactus bullet array
     void destroyBullets()
     {
       for(int i = 0; i < numberOfBullets; i++)
@@ -86,31 +99,24 @@ public class FinalBossBehavior : MonoBehaviour
       }      
     }
 
+
+
     void testingShoot()
     { 
+      Debug.Log("testingShoot");
       int bulletSpeed = 10; //Speed of bullets
 
       //Shoots bullets(will automate later)
-      if(Input.GetKeyDown(KeyCode.G))
-      {
         for(int i = 0; i < cactusBulletStage1Array.Length; i++)
         {
           cactusBulletStage1RigidBodyArray[i].constraints = RigidbodyConstraints2D.None;
           cactusBulletStage1RigidBodyArray[i].velocity = new Vector2(-Mathf.Sin(cactusBulletStage1RotationArray[i] * Mathf.Deg2Rad) * bulletSpeed,
                                                                       Mathf.Cos(cactusBulletStage1RotationArray[i] * Mathf.Deg2Rad) * bulletSpeed);
-          Debug.Log("Z rotation: " + cactusBulletStage1RotationArray[i]);
-          Debug.Log("Sin(Z) = " + Mathf.Sin(cactusBulletStage1RotationArray[i]) * Mathf.Deg2Rad);
-          Debug.Log("Cos(Z) = " + Mathf.Cos(cactusBulletStage1RotationArray[i]) * Mathf.Deg2Rad);
-          Debug.Log("X Velocity: " + cactusBulletStage1RigidBodyArray[i].velocity.x);
-          Debug.Log("Y Velocity: " + cactusBulletStage1RigidBodyArray[i].velocity.y);
         }
 
-      }
-
-      if(Input.GetKeyDown(KeyCode.F)){
-        bulletsDestroyed = false;
+        
         StartCoroutine(spawnNewBullets());
-      }
+      
 
     }
 }

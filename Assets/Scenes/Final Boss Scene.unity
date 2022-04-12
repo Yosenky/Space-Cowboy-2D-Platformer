@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 48811438}
   m_Layer: 0
   m_Name: RightWall
-  m_TagString: Untagged
+  m_TagString: Boundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -443,8 +443,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 696030045}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.273, y: -4.17, z: 0}
-  m_LocalScale: {x: 0.971064, y: 0.33999068, z: 0.07325702}
+  m_LocalPosition: {x: -0.026, y: -2.098, z: 0}
+  m_LocalScale: {x: 0.929549, y: 1.1033802, z: 0.07325702}
   m_Children: []
   m_Father: {fileID: 1828134814}
   m_RootOrder: 0
@@ -715,6 +715,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6333080842278244092, guid: 4dcaf38234f8e4963ab62e5d4f43d24e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7552652227152451093, guid: 4dcaf38234f8e4963ab62e5d4f43d24e,
         type: 3}
@@ -996,7 +1001,7 @@ GameObject:
   - component: {fileID: 1713012302}
   m_Layer: 0
   m_Name: LeftWall
-  m_TagString: Untagged
+  m_TagString: Boundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1126,7 +1131,7 @@ GameObject:
   - component: {fileID: 1815553886}
   m_Layer: 0
   m_Name: Roof
-  m_TagString: Untagged
+  m_TagString: Boundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1273,12 +1278,34 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -2.33, y: -2.86}
-      - {x: -3.22, y: -3.78}
-      - {x: -3.22, y: -5.12}
-      - {x: 2.58, y: -5.12}
-      - {x: 2.58, y: -3.76}
-      - {x: 1.7099999, y: -2.86}
+    - - {x: 4.4829926, y: 0.3176636}
+      - {x: 3.5229669, y: 0.32074547}
+      - {x: 3.5242817, y: -0.64433}
+      - {x: 2.5635843, y: -0.6430464}
+      - {x: 2.5638049, y: 0.26654243}
+      - {x: 2.5568507, y: 0.31747723}
+      - {x: 1.9225874, y: 0.31711006}
+      - {x: 1.9162276, y: 0.63592434}
+      - {x: 1.6151507, y: 0.638113}
+      - {x: 1.6007925, y: 0.6542177}
+      - {x: 1.6017798, y: 0.9583206}
+      - {x: -1.5972786, y: 0.9653969}
+      - {x: -1.5901225, y: 0.643486}
+      - {x: -2.2301786, y: 0.64125633}
+      - {x: -2.236522, y: 0.32130146}
+      - {x: -2.555548, y: 0.31783772}
+      - {x: -2.560232, y: -0.9467249}
+      - {x: -3.2065923, y: -0.95783424}
+      - {x: -3.2039638, y: -0.002585411}
+      - {x: -4.479418, y: -0.005582392}
+      - {x: -4.4734387, y: -2.2313743}
+      - {x: -2.5391798, y: -2.234535}
+      - {x: -2.5574074, y: -4.900694}
+      - {x: -2.5395696, y: -4.9062967}
+      - {x: 2.5742242, y: -4.8774176}
+      - {x: 2.5731287, y: -1.9065828}
+      - {x: 2.9767969, y: -1.9093933}
+      - {x: 4.5, y: -1.92}
 --- !u!50 &1828134813
 Rigidbody2D:
   serializedVersion: 4
@@ -1492,7 +1519,7 @@ PrefabInstance:
         type: 3}
       propertyPath: polyCollider
       value: 
-      objectReference: {fileID: 1828134812}
+      objectReference: {fileID: 0}
     - target: {fileID: 8477728421237245018, guid: 9b5bbb904d5e1a9b88b62eeba5e923cd,
         type: 3}
       propertyPath: deletedBullets
@@ -1565,6 +1592,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8967043326880974454, guid: 9b5bbb904d5e1a9b88b62eeba5e923cd,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9113639da2a7b702c97431a3942619df,
+        type: 3}
     - target: {fileID: 8967043326880974454, guid: 9b5bbb904d5e1a9b88b62eeba5e923cd,
         type: 3}
       propertyPath: m_DrawMode
