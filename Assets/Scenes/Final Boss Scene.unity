@@ -703,6 +703,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6333080842278244091, guid: 4dcaf38234f8e4963ab62e5d4f43d24e,
         type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1442715797178035514, guid: 78bb070db2c646beea2b15c2a00c677b,
+        type: 3}
+    - target: {fileID: 6333080842278244091, guid: 4dcaf38234f8e4963ab62e5d4f43d24e,
+        type: 3}
       propertyPath: runSpeed
       value: 10
       objectReference: {fileID: 0}
@@ -720,6 +726,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6333080842929083912, guid: 4dcaf38234f8e4963ab62e5d4f43d24e,
+        type: 3}
+      propertyPath: m_TagString
+      value: PlayerBullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 6333080842929083913, guid: 4dcaf38234f8e4963ab62e5d4f43d24e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 6333080842929083913, guid: 4dcaf38234f8e4963ab62e5d4f43d24e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.62
       objectReference: {fileID: 0}
     - target: {fileID: 7552652227152451093, guid: 4dcaf38234f8e4963ab62e5d4f43d24e,
         type: 3}
@@ -1510,6 +1531,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8477728421237245018, guid: 9b5bbb904d5e1a9b88b62eeba5e923cd,
+        type: 3}
+      propertyPath: finalBoss
+      value: 
+      objectReference: {fileID: 1828134811}
     - target: {fileID: 8477728421237245018, guid: 9b5bbb904d5e1a9b88b62eeba5e923cd,
         type: 3}
       propertyPath: edgeCollider

@@ -7,11 +7,12 @@ public class Player : MonoBehaviour
    public Rigidbody2D rb;
    public float strength = 300f, velocity=5f, runSpeed=100f;
    public float bulletSpeed = 10;
-   public Rigidbody bullet;
+   public GameObject bullet;
    public bool onFloor=false, isRunning=false;
    public int jumping=0;
    public int currentHealth = 0, maxHealth=250;
    public HealthBar healthBar;
+   GameObject bulletClone;
 
    void Awake(){
     rb = GetComponent<Rigidbody2D>();
@@ -58,9 +59,9 @@ public class Player : MonoBehaviour
      //create bullets and give them velocity
      void Fire()
      {
-         Rigidbody bulletClone = (Rigidbody) Instantiate(bullet, transform.position, transform.rotation);
-         bulletClone.velocity = new Vector2(bulletSpeed,0.0f);
-         bulletClone.AddForce(bulletClone.velocity,(ForceMode.Force));
+         bulletClone =  Instantiate(bullet, new Vector2(transform.position.x, transform.position.y - 1), transform.rotation);
+         bulletClone.GetComponent<Rigidbody2D>().velocity = new Vector2(bulletSpeed,0.0f);
+         //bulletClone.GetComponent<Rigidbody2D>().AddForce(bulletClone.GetComponent<Rigidbody2D>().velocity,(ForceMode.Force));
      }
 
      void move(){
@@ -104,6 +105,7 @@ public class Player : MonoBehaviour
         if (other.gameObject.tag == "Bullet"){
             DamagePlayer(10);
         }
+        Destroy(bulletClone);
      }
 
      
