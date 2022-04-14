@@ -55,11 +55,8 @@ public class Player : MonoBehaviour
           jumping=0;  
         }
      }
-<<<<<<< Updated upstream
+
      //create bullets and give them velocity
-=======
-     
->>>>>>> Stashed changes
      void Fire()
      {
          Rigidbody bulletClone = (Rigidbody) Instantiate(bullet, transform.position, transform.rotation);
