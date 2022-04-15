@@ -105,7 +105,7 @@ public class Player : MonoBehaviour
         if (other.gameObject.tag == "Bullet"){
             DamagePlayer(10);
         }
-        Destroy(bulletClone);
+
      }
 
      
