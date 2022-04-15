@@ -8,6 +8,7 @@ TagManager:
   - Floor
   - Boundary
   - PlayerBullet
+  - Boss
   layers:
   - Default
   - TransparentFX

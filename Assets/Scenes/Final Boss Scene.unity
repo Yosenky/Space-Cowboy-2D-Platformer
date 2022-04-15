@@ -430,7 +430,7 @@ GameObject:
   - component: {fileID: 696030049}
   m_Layer: 0
   m_Name: SpikeSpawnPoint
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -646,6 +646,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6333080842278244088, guid: 4dcaf38234f8e4963ab62e5d4f43d24e,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 3a453b6b773d93c7f8ecc8b7c6362d62, type: 2}
     - target: {fileID: 6333080842278244090, guid: 4dcaf38234f8e4963ab62e5d4f43d24e,
         type: 3}
       propertyPath: m_RootOrder
@@ -1638,6 +1643,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TempStage1Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967043326880974455, guid: 9b5bbb904d5e1a9b88b62eeba5e923cd,
+        type: 3}
+      propertyPath: m_TagString
+      value: Boss
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b5bbb904d5e1a9b88b62eeba5e923cd, type: 3}
