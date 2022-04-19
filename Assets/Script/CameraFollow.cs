@@ -18,6 +18,7 @@ public class CameraFollow : MonoBehaviour
 
     private void Start()
     {
+        //Set the min and max bounds == the edges of the map
         xMin = leftMapBound.bounds.max.x;
         xMax = rightMapBound.bounds.min.x;
         yMin = bottomMapBound.bounds.max.y;
@@ -31,8 +32,10 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        camY = Mathf.Clamp(followTransform.position.y, yMin, yMax);
-        camX = Mathf.Clamp(followTransform.position.x, xMin, xMax);
+        //Set X and Y bounds to the edges of the screen - or + half the width or height of the camera, respectfully
+        camY = Mathf.Clamp(followTransform.position.y, yMin + height/2.0f, yMax - height/2.0f);
+        camX = Mathf.Clamp(followTransform.position.x, xMin + width/2.0f, xMax - width/2.0f);
+        //Smooth the camera movement
         smoothPos = Vector3.Lerp(this.transform.position, new Vector3(camX, camY, this.transform.position.z), smoothSpeed);
         this.transform.position = smoothPos;
     }

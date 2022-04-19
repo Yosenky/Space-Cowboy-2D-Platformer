@@ -21,8 +21,8 @@ public class EnemyRoam : MonoBehaviour
         //Set the enemy's initial target to point A, get Rigidbody
         rb = GetComponent<Rigidbody2D>();
         currentTarget = pointA;
-        //Make the player move towards point B (point B > point A)
-        rb.velocity = new Vector2(velocity, 0);
+        //Make the player move towards point A (point A < point B)
+        rb.velocity = new Vector2(-velocity, 0);
     }
 
     // Update is called once per frame
@@ -32,7 +32,8 @@ public class EnemyRoam : MonoBehaviour
         if(currentTarget == pointA) {
             //Player has reached point A, reverse velocity and switch target point 
             if (transform.position.x <= pointA) {
-                rb.velocity = new Vector2(-velocity, 0);
+                //Debug.Log("Enemy at A");
+                rb.velocity = new Vector2(velocity, 0);
                 currentTarget = pointB;
             }
         }
@@ -41,7 +42,7 @@ public class EnemyRoam : MonoBehaviour
             //Player has reached point B, reverse velocity and switch target point
             if (transform.position.x >= pointB) {
                 //Debug.Log("Enemy at B");
-                rb.velocity = new Vector2(velocity, 0);
+                rb.velocity = new Vector2(-velocity, 0);
                 currentTarget = pointA;
             }
         }
