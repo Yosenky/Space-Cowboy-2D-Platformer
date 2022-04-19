@@ -24,6 +24,9 @@ public class FinalBossBehavior : MonoBehaviour
   public int maxHealth = 100;
   public int currentHealth;
 
+  public AudioSource victoryCheer;
+  public AudioSource bossDamaged;
+
 
     void Start()
     {
@@ -132,11 +135,12 @@ public class FinalBossBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other){
         if (other.gameObject.tag == "PlayerBullet"){
-          Debug.Log("BOSS DAMAGED");
+            bossDamaged.Play();
             DamageBoss(10);
         }
         if(currentHealth <= 0){
           Destroy(finalBoss);
+          victoryCheer.Play();
         }
      }
 
