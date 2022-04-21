@@ -19,7 +19,11 @@ public class Player : MonoBehaviour
     currentHealth=maxHealth;
    }
    void Update(){
-    playerDead();
+     if (currentHealth <= 0){
+       playerDead();
+       rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
+     } 
      jump();
      move();
 
@@ -124,10 +128,8 @@ public class Player : MonoBehaviour
      }
 
      void playerDead(){
-        if (currentHealth <= 0){
             rb.constraints = RigidbodyConstraints2D.None;
-            gameObject.transform.Rotate(90f,0f,0f,Space.Self);
-        }
+            gameObject.transform.rotation = Quaternion.Euler(Vector3.forward * 90);
      }
  
 
