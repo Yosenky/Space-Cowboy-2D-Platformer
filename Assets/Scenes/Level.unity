@@ -513,7 +513,7 @@ PrefabInstance:
     - target: {fileID: 6602933537497881066, guid: e08bb03c2024e0c468589b63a7b6e747,
         type: 3}
       propertyPath: pointA
-      value: 22.5
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 6602933537497881066, guid: e08bb03c2024e0c468589b63a7b6e747,
         type: 3}
@@ -5242,9 +5242,10 @@ GameObject:
   - component: {fileID: 2097329883}
   - component: {fileID: 2097329882}
   - component: {fileID: 2097329881}
+  - component: {fileID: 2097329884}
   m_Layer: 0
   m_Name: Portal
-  m_TagString: Untagged
+  m_TagString: Portal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5331,6 +5332,43 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &2097329884
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2097329880}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0.01, y: 0.02, z: 0.01, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.46, y: 0.97}
+    newSize: {x: 0.46, y: 0.95}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.22, y: 0.295}
+      - {x: 0.18415444, y: 0.34832108}
+      - {x: 0.089999996, y: 0.48499998}
+      - {x: -0.11, y: 0.48499998}
+      - {x: -0.22999999, y: 0.24091235}
+      - {x: -0.22999999, y: -0.21499999}
+      - {x: -0.1887667, y: -0.3375912}
+      - {x: -0.08, y: -0.475}
+      - {x: 0.08, y: -0.475}
+      - {x: 0.17707776, y: -0.3479561}
+      - {x: 0.22999999, y: -0.17645955}
+      - {x: 0.22999999, y: 0.2675912}
 --- !u!1001 &1983734153409839799
 PrefabInstance:
   m_ObjectHideFlags: 0

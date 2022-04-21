@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -114,6 +115,12 @@ public class Player : MonoBehaviour
             DamagePlayer(50);
         }
 
+        if (other.gameObject.tag == "Portal") {
+            //Load scene 2 in File -> Build Settings (Final Boss Scene
+            SceneManager.LoadScene(2);
+            //Unload scene 1 in File -> Build Settings (Level)
+            SceneManager.UnloadSceneAsync(1);
+        }
      }
 
      
