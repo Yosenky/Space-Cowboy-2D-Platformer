@@ -107,6 +107,14 @@ public class Player : MonoBehaviour
             DamagePlayer(10);
         }
 
+        if (other.gameObject.tag == "Enemy"){
+            DamagePlayer(30);
+        }
+
+        if (other.gameObject.tag == "Boss"){
+            DamagePlayer(50);
+        }
+
      }
 
      
