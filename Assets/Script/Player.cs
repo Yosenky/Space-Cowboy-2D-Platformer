@@ -23,26 +23,21 @@ public class Player : MonoBehaviour
        playerDead();
        rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
-     } 
-     jump();
-     move();
+     } else{
+       jump();
+       move();
 
-     //press J or click to shoot
-     if (Input.GetKeyDown(KeyCode.J) || Input.GetMouseButtonDown(0)){
+       //press J or click to shoot
+       if (Input.GetKeyDown(KeyCode.J) || Input.GetMouseButtonDown(0)){
              Fire();
+       }
+
+       //damage player test
+       if (Input.GetKeyDown(KeyCode.X)){
+          DamagePlayer(10);
+       }
      }
-
-     //damage player test
-     if (Input.GetKeyDown(KeyCode.X)){
-        DamagePlayer(10);
-     }
-
-     //remove gravity if on floor so that player movement doesn't slow down
-     /*if(d){
-        rb.gravityScale=0f;
-     }else
-        rb.gravityScale=1f;*/
-
+    
 
 
    }
