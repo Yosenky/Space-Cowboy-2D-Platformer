@@ -1000,7 +1000,7 @@ PrefabInstance:
     - target: {fileID: 6333080842278244088, guid: 4dcaf38234f8e4963ab62e5d4f43d24e,
         type: 3}
       propertyPath: m_Constraints
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6333080842278244088, guid: 4dcaf38234f8e4963ab62e5d4f43d24e,
         type: 3}
@@ -1015,12 +1015,12 @@ PrefabInstance:
     - target: {fileID: 6333080842278244090, guid: 4dcaf38234f8e4963ab62e5d4f43d24e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.4
+      value: 3.47
       objectReference: {fileID: 0}
     - target: {fileID: 6333080842278244090, guid: 4dcaf38234f8e4963ab62e5d4f43d24e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.86
+      value: 1.56
       objectReference: {fileID: 0}
     - target: {fileID: 6333080842278244090, guid: 4dcaf38234f8e4963ab62e5d4f43d24e,
         type: 3}
@@ -1062,6 +1062,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6333080842278244091, guid: 4dcaf38234f8e4963ab62e5d4f43d24e,
+        type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1442715797178035514, guid: 78bb070db2c646beea2b15c2a00c677b,
+        type: 3}
     - target: {fileID: 6333080842278244091, guid: 4dcaf38234f8e4963ab62e5d4f43d24e,
         type: 3}
       propertyPath: healthBar

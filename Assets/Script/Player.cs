@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     currentHealth=maxHealth;
    }
    void Update(){
+    playerDead();
      jump();
      move();
 
@@ -59,7 +60,7 @@ public class Player : MonoBehaviour
      //create bullets and give them velocity
      void Fire()
      {
-         bulletClone =  Instantiate(bullet, new Vector2(transform.position.x, transform.position.y - 1), transform.rotation);
+         bulletClone =  Instantiate(bullet, new Vector2(transform.position.x+0.8f, transform.position.y-.3f), transform.rotation);
          bulletClone.GetComponent<Rigidbody2D>().velocity = new Vector2(bulletSpeed,0.0f);
          //bulletClone.GetComponent<Rigidbody2D>().AddForce(bulletClone.GetComponent<Rigidbody2D>().velocity,(ForceMode.Force));
      }
@@ -112,6 +113,13 @@ public class Player : MonoBehaviour
      private void DamagePlayer(int damage){
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
+     }
+
+     void playerDead(){
+        if (currentHealth <= 0){
+            rb.constraints = RigidbodyConstraints2D.None;
+            gameObject.transform.Rotate(90f,0f,0f,Space.Self);
+        }
      }
  
 
