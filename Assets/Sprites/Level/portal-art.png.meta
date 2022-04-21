@@ -187,12 +187,12 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2
-        y: 62
+        y: 9
         width: 46
         height: 97
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 1, y: 2, z: 1, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -208,12 +208,12 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 49
-        y: 59
+        y: 6
         width: 49
-        height: 98
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+        height: 100
+      alignment: 9
+      pivot: {x: 0.5268883, y: 0.49560824}
+      border: {x: 4, y: 3, z: 1, w: 2}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -229,12 +229,12 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 102
-        y: 59
+        y: 6
         width: 49
-        height: 95
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+        height: 97
+      alignment: 9
+      pivot: {x: 0.45518634, y: 0.48641732}
+      border: {x: 1, y: 0, z: 4, w: 2}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -250,102 +250,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 152
-        y: 59
+        y: 6
         width: 46
-        height: 98
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+        height: 100
+      alignment: 9
+      pivot: {x: 0.49045298, y: 0.49560824}
+      border: {x: 1, y: 3, z: 1, w: 2}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: cc23aac130170f300800000000000000
       internalID: 283851034704097996
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: portal-art_4
-      rect:
-        serializedVersion: 2
-        x: 14
-        y: 43
-        width: 19
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d363aa7e6df0b4d10800000000000000
-      internalID: 2110798266037319229
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: portal-art_5
-      rect:
-        serializedVersion: 2
-        x: 59
-        y: 41
-        width: 30
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 505a7279a53adeba0800000000000000
-      internalID: -6058006314265107195
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: portal-art_6
-      rect:
-        serializedVersion: 2
-        x: 109
-        y: 41
-        width: 32
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a961b827ed516ac60800000000000000
-      internalID: 7828969047378826906
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: portal-art_7
-      rect:
-        serializedVersion: 2
-        x: 159
-        y: 41
-        width: 30
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 016266f176fac82d0800000000000000
-      internalID: -3275049971561912816
       vertices: []
       indices: 
       edges: []
