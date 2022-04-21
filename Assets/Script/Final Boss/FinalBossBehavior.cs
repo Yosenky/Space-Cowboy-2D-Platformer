@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FinalBossBehavior : MonoBehaviour
 {
@@ -18,33 +19,29 @@ public class FinalBossBehavior : MonoBehaviour
   int numberOfBullets; //Number of bullets
   bool bulletsDestroyed = true; //False if bullets need to be destroyed, True if already destroyed
 
-  public GameObject finalBoss;
+  public GameObject finalBoss; //GameObject for the final boss
 
-  public int bossHealth;
-  public int maxHealth = 100;
-  public int currentHealth;
+  public int maxHealth = 100; //The initial health of the boss
+  public int currentHealth;  //The current health of the boss
 
-  public AudioSource victoryCheer;
-  public AudioSource bossDamaged;
+  public AudioSource victoryCheer; //Victory cheer sound for when the boss is defeated
+  public AudioSource bossDamaged;  //Damage sound for when the boss takes damage
+
+  public Text victoryText; //Congratulations text that appears after you defeat the boss
 
 
     void Start()
     {
-      currentHealth = maxHealth;
-      stageOneShoot();
-      StartCoroutine(spawnNewBullets());
+      currentHealth = maxHealth; //Initializes the health of the boss
+      initializeArrays();
     }
+   
 
-    void Update()
-    {
-    }
-
-    //Shooting script for stage 1
-    void stageOneShoot()
+    //Initialize the arrays
+    void initializeArrays()
     {
       //Instantiate bullets around cactus
       numberOfBullets = Random.Range(8,12);
-      //numberOfBullets = 3; //Static number used in bug testing
 
       //initializing arrays
       cactusBulletStage1Array = new GameObject[numberOfBullets];
@@ -52,15 +49,13 @@ public class FinalBossBehavior : MonoBehaviour
       cactusBulletStage1RigidBodyArray = new Rigidbody2D[numberOfBullets];
       spriteRenderers = new SpriteRenderer[numberOfBullets];
 
+      //Starts the coroutine to continuously spawn and shoot bullets
       StartCoroutine(spawnNewBullets());
-
-
-
-      //Pause
-      //Shoot slowly out from spawn
     }
 
-    IEnumerator spawnNewBullets(){
+
+    IEnumerator spawnNewBullets()
+    {
       if(!bulletsDestroyed)
         {
           yield return new WaitForSeconds(1);
@@ -70,6 +65,7 @@ public class FinalBossBehavior : MonoBehaviour
           bulletsDestroyed = true;
         }
 
+      //Spawning bullets in a radial pattern around the cactus
       for(int i = 0; i < numberOfBullets; i++)
       {
         float bulletRotation = 85 - (170/(numberOfBullets-1)) * i; //Rotation of the bullets as they are spawned in, creates a semicircle around cactus
@@ -81,19 +77,9 @@ public class FinalBossBehavior : MonoBehaviour
         cactusBulletStage1RotationArray[i] = bulletRotation;
         cactusBulletStage1RigidBodyArray[i] = cactusBulletStage1Array[i].GetComponent<Rigidbody2D>();
       }
-      testingShoot();
-      //yield return new WaitForSeconds(5);
+      shoot();
     }
     
-
-   /*
-    IEnumerator spawnNewBulletsTimer(){
-      testingShoot();
-      yield return new WaitForSeconds(1);
-      bulletsDestroyed = false;
-      StartCoroutine(spawnNewBullets());
-    }
-    */
 
     //Changes the bullet sprites to show that they have been destroyed
     void changeBulletSprites()
@@ -114,38 +100,42 @@ public class FinalBossBehavior : MonoBehaviour
     }
 
 
-
-    void testingShoot()
+    //Shoots bullets
+    void shoot()
     { 
       int bulletSpeed = 10; //Speed of bullets
 
-      //Shoots bullets(will automate later)
-        for(int i = 0; i < cactusBulletStage1Array.Length; i++)
-        {
-          cactusBulletStage1RigidBodyArray[i].constraints = RigidbodyConstraints2D.None;
-          cactusBulletStage1RigidBodyArray[i].velocity = new Vector2(-Mathf.Sin(cactusBulletStage1RotationArray[i] * Mathf.Deg2Rad) * bulletSpeed,
-                                                                      Mathf.Cos(cactusBulletStage1RotationArray[i] * Mathf.Deg2Rad) * bulletSpeed);
-        }
+      for(int i = 0; i < cactusBulletStage1Array.Length; i++)
+      {
+        cactusBulletStage1RigidBodyArray[i].constraints = RigidbodyConstraints2D.None;
+        cactusBulletStage1RigidBodyArray[i].velocity = new Vector2(-Mathf.Sin(cactusBulletStage1RotationArray[i] * Mathf.Deg2Rad) * bulletSpeed,
+                                                                    Mathf.Cos(cactusBulletStage1RotationArray[i] * Mathf.Deg2Rad) * bulletSpeed);
+      }
 
-        bulletsDestroyed = false;
-        StartCoroutine(spawnNewBullets());
-      
-
+      bulletsDestroyed = false;
+      StartCoroutine(spawnNewBullets());
     }
 
-    private void OnTriggerEnter2D(Collider2D other){
-        if (other.gameObject.tag == "PlayerBullet"){
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+      //If player bullet hits boss, damage him
+        if (other.gameObject.tag == "PlayerBullet")
+        {
             bossDamaged.Play();
             DamageBoss(10);
         }
-        if(currentHealth <= 0){
+      //If the boss's health drops to/below 0, kill it
+        if(currentHealth <= 0)
+        {
           Destroy(finalBoss);
+          victoryText.gameObject.SetActive(true);
           victoryCheer.Play();
         }
      }
 
      
-     private void DamageBoss(int damage){
+     private void DamageBoss(int damage)
+     {
         currentHealth -= damage;
      }
 }
