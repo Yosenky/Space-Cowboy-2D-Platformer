@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
    public Rigidbody2D rb;
-   public float strength = 300f, velocity=5f, runSpeed=100f;
+   public float strength = 300f, velocity=5f, runSpeed=10f;
    public float bulletSpeed = 10;
    public GameObject bullet;
    public bool onFloor=false, isRunning=false;
@@ -14,15 +15,21 @@ public class Player : MonoBehaviour
    public int currentHealth = 0, maxHealth=250;
    public HealthBar healthBar;
    GameObject bulletClone;
+   public Button mainMenuButton;
+   public Text deathText;
 
    void Awake(){
     rb = GetComponent<Rigidbody2D>();
     currentHealth=maxHealth;
+    Time.timeScale = 1f;
+
+    rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
    }
    void Update(){
      if (currentHealth <= 0){
        playerDead();
-       rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
 
      } else{
        jump();
@@ -85,10 +92,6 @@ public class Player : MonoBehaviour
         //same as above
         if (Input.GetKeyDown(KeyCode.D)) 
         {
-            if(Input.GetKey(KeyCode.RightShift)){
-              isRunning=true;
-              rb.velocity = new Vector2 (runSpeed,rb.velocity.y);
-            }else
               rb.velocity = new Vector2 (velocity,rb.velocity.y);
         }
         if (Input.GetKeyUp(KeyCode.D)) 
@@ -121,6 +124,10 @@ public class Player : MonoBehaviour
             //Unload scene 1 in File -> Build Settings (Level)
             SceneManager.UnloadSceneAsync(1);
         }
+
+        if (other.gameObject.tag == "bottomBound"){
+          playerDead();
+        }
      }
 
      
@@ -130,8 +137,18 @@ public class Player : MonoBehaviour
      }
 
      void playerDead(){
-            rb.constraints = RigidbodyConstraints2D.None;
-            gameObject.transform.rotation = Quaternion.Euler(Vector3.forward * 90);
+       Time.timeScale = 0f;
+       rb.constraints = RigidbodyConstraints2D.FreezeAll;
+       gameObject.transform.rotation = Quaternion.Euler(Vector3.forward * 90);
+       deathText.gameObject.SetActive(true);
+       mainMenuButton.gameObject.SetActive(true);
+     }
+
+     public void loadMainMenu(){
+       //Load scene 2 in File -> Build Settings (Final Boss Scene
+            SceneManager.LoadScene(0);
+            //Unload scene 1 in File -> Build Settings (Level)
+            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
      }
  
 

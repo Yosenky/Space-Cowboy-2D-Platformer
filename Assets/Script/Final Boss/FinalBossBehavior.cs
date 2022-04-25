@@ -28,6 +28,7 @@ public class FinalBossBehavior : MonoBehaviour
   public AudioSource bossDamaged;  //Damage sound for when the boss takes damage
 
   public Text victoryText; //Congratulations text that appears after you defeat the boss
+  public Button mainMenuButton; //Button that takes you back to the main menu
 
 
     void Start()
@@ -129,6 +130,7 @@ public class FinalBossBehavior : MonoBehaviour
         {
           Destroy(finalBoss);
           victoryText.gameObject.SetActive(true);
+          mainMenuButton.gameObject.SetActive(true);
           victoryCheer.Play();
         }
      }
